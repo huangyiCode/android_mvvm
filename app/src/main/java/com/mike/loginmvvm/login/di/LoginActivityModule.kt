@@ -26,4 +26,10 @@ class LoginActivityModule {
     fun provideLoginUseCase(loginUseCaseImpl: LoginUseCaseImpl): LoginUseCase {
         return loginUseCaseImpl
     }
+    
+    @Provides
+    @ActivityScope
+    fun provideFactory(viewModels:MutableMap<Class<out ViewModel>, Provider<ViewModel>>): ViewModelProvider.Factory {
+        return ViewModelFactory(viewModels)
+    }
 }
